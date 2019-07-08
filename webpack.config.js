@@ -16,7 +16,9 @@ module.exports = {
             presets: [require('@babel/preset-env'), '@babel/preset-react'],
             plugins: [
               require('@babel/plugin-proposal-object-rest-spread'),
-              require('@babel/plugin-proposal-class-properties')]
+              require('@babel/plugin-proposal-class-properties'),
+              "@babel/plugin-transform-runtime",
+            ]
           }
         }
       },
@@ -38,5 +40,12 @@ module.exports = {
         ],
       } 
     ]
+  },
+  devServer: {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    }
   }
 }
