@@ -9,21 +9,24 @@ export default class extends Component {
   }
 
   handleChange(key) {
-
+  
   }
 
   render() {
     return (
-      <Grid item xs={12} style={{ margin: 20 }}>
+      <Grid item xs={6} style={{ margin: 20 }}>
         <Paper style={{ width: "100%" }}>
-          <Grid xs={12} container style={{ padding: 10 }}>
-            <Grid item xs={2}>
+          <Grid xs={6} container style={{padding: 10}}>
+            <Grid item xs={4}>
               <h2 style={{ color: "white" }}>Token Contract</h2>
+            </Grid>
+            <Grid item xs={8}>
+            <h3><a style={{textDocoration: "none"}}href="https://whatsonchain.com/tx/63eec681025b07b9aa9d3720a125ce33dfd46e0b940a518100811c1f4eea86f0">63eec681025b07b9aa9d3720a125ce33dfd46e0b940a518100811c1f4eea86f0</a></h3>
             </Grid>
           </Grid>
           <Divider />
           <Grid container xs={12}>
-            <Grid item xs={3}>
+            <Grid item xs={6}>
               <ExpansionPanel>
                 <ExpansionPanelSummary
                   aria-controls="panel1a-content"
@@ -71,7 +74,7 @@ export default class extends Component {
                 </ExpansionPanelDetails>
               </ExpansionPanel>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={6}>
               <ExpansionPanel>
                 <ExpansionPanelSummary
                   aria-controls="panel1a-content"

@@ -14,12 +14,13 @@ export default class Main extends Component {
   render = () => (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Grid container spacing={3}>
+      <Grid container 
+        spacing={3}
+        alignItems="center"
+        justify="center">
         <NavBar />
         <Contract />
-        <Market />
         <Transactions />
-        <Blocks />
       </Grid>
     </ThemeProvider>
   )

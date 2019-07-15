@@ -42,7 +42,7 @@ export default class Transaction extends Component {
   
   render() {
     return (
-      <Grid container xs={6} style={{ height: 600, margin: 20, padding: 10 }}>
+      <Grid container xs={6} style={{ padding: 10 }}>
         <Paper style={{ width: "100%", padding: 10 }}>
           <h2>Transactions</h2>
           <Divider />
@@ -52,7 +52,8 @@ export default class Transaction extends Component {
                 <TableCell>Transaction Hash</TableCell>
                 <TableCell align="right">Tape Index</TableCell>
                 <TableCell align="right">Block</TableCell>
-                <TableCell align="right">Output</TableCell>
+                <TableCell align="right">Method</TableCell>
+                <TableCell align="right">Params</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

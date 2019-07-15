@@ -17,8 +17,6 @@ export default class NavBar extends Component {
 
     // save to local storage
     window.localStorage.setItem("key", JSON.stringify(key))
-    
-
   }
 
   async downloadKey() {
@@ -26,7 +24,8 @@ export default class NavBar extends Component {
 
     // get key from local storage
     const key = window.localStorage.getItem("key")
-    console.log("key", JSON.parse(key))
+
+    // automatic link click download
     const blob = new Blob([key], {type: "application/json"})
     const href = await URL.createObjectURL(blob)
     const link = document.createElement("a")
