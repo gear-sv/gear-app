@@ -8,7 +8,20 @@ const gearium = {
     // create express server
     const app = express()
 
-    // transaction endpoint
+    // static interface for web app
+    app.use(express.static("static"))
+
+
+    /*
+      WEB SERVER
+    */
+    app.get("/", (req, res) => {
+      res.send(`${__dirname}/index.html`)
+    })
+
+    /*
+      TRANSACTION
+    */
     app.get("/transaction/:id", async (req, res) => {
       // 1. format query string
       const query = {
@@ -26,7 +39,9 @@ const gearium = {
       // res.send(response.data.val)
     })
 
-    // state endpoint
+    /*
+      STATE
+    */
     app.get("/state/:block", async (req, res) => {
       // 1. format query string
       const query = {
