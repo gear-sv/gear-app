@@ -10,14 +10,38 @@ const gearium = {
 
     // transaction endpoint
     app.get("/transaction/:id", async (req, res) => {
-      console.log("hit transaction endpoint")
+      // 1. format query string
+      const query = {
+        "get": req.params.id
+      }
+      const queryB64 = Buffer.from(JSON.stringify(query)).toString("base64")
+
+      // 2. fetch transaction from planarium service
+      const response = await axios({
+        url: `http://localhost:${transactionPort}/q/${queryB64}`
+      })
+
+      console.log(response.data.val)
+
+      // res.send(response.data.val)
     })
 
     // state endpoint
     app.get("/state/:block", async (req, res) => {
-      console.log("hit state endpoint")
-      console.log(req.params.block)
-      res.send({ state: "yooo" })
+      // 1. format query string
+      const query = {
+        "get": req.params.block
+      }
+      const queryB64 = Buffer.from(JSON.stringify(query)).toString("base64")
+
+      // 2. fetch state from planarium service
+      const response = await axios({
+        url: `http://localhost:${statePort}/q/${queryB64}`
+      })
+
+      console.log(response.data.val)
+
+      // res.send(response.data.val)
     })
 
     app.listen(port, () => {

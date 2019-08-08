@@ -1,3 +1,3 @@
 const gearium = require("./index.js")
 
-gearium.start(3030, 3009, 3011)
+gearium.start(3030, 3009, 3010)
