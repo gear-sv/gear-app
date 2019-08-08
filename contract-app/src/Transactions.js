@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Grid, Paper, Divider, Table, TableBody, TableCell, TableRow, TableHead } from "@material-ui/core"
+import { Grid, Paper, Divider, Table, TableBody, TableCell, TableRow, TableHead, Button, TextField } from "@material-ui/core"
 
 export default class Transaction extends Component {
   constructor() {
@@ -24,7 +24,7 @@ export default class Transaction extends Component {
 
     this.setState((state) => {
       return { transactions: transactions }
-    }) 
+    })
   }
 
   transactionList() {
@@ -39,27 +39,40 @@ export default class Transaction extends Component {
       )
     })
   }
-  
+
+  transaction() {
+    return (
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Transaction Hash</TableCell>
+            <TableCell align="right">Tape Index</TableCell>
+            <TableCell align="right">Block</TableCell>
+            <TableCell align="right">Method</TableCell>
+            <TableCell align="right">Params</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {this.transactionList()}
+        </TableBody>
+      </Table>
+    )
+  }
+
   render() {
     return (
-      <Grid container xs={6} style={{ padding: 10 }}>
+      <Grid container xs={12} md={10} xl={8} style={{ padding: 10 }}>
         <Paper style={{ width: "100%", padding: 10 }}>
           <h2>Transactions</h2>
           <Divider />
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Transaction Hash</TableCell>
-                <TableCell align="right">Tape Index</TableCell>
-                <TableCell align="right">Block</TableCell>
-                <TableCell align="right">Method</TableCell>
-                <TableCell align="right">Params</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {this.transactionList()}
-            </TableBody>
-          </Table>
+          <TextField
+            id="standard-name"
+            label="Query Transaction By Transaction ID"
+            value={this.account}
+            margin="normal"
+            style={{width: '90%' }}
+          />
+          <Button style={{ width: "10%", height: 80 }}>QUERY</Button>
         </Paper>
       </Grid>
     )

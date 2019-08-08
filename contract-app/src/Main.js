@@ -4,22 +4,25 @@ import { ThemeProvider, MuiThemeProvider, getMuiTheme } from "@material-ui/style
 import CssBaseline from "@material-ui/core/CssBaseline"
 
 import theme from "./theme.js"
-import NavBar from "./NavBar"
+import Wallet from "./Wallet"
 import Contract from "./Contract"
 import Transactions from "./Transactions"
-import Market from "./Market"
 import Blocks from "./Blocks"
+import State from "./State"
+import Write from "./Write"
 
 export default class Main extends Component {
   render = () => (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Grid container 
+      <Grid container
         spacing={3}
         alignItems="center"
         justify="center">
-        <NavBar />
+        <Wallet />
         <Contract />
+        <Write />
+        <State />
         <Transactions />
       </Grid>
     </ThemeProvider>

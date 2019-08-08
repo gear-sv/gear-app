@@ -1,14 +1,14 @@
 import React, { Component } from "react"
-import { AppBar, Grid, Button } from "@material-ui/core"
+import { Grid, Button, GridItem } from "@material-ui/core"
 import bsv from "bsv"
 
-export default class NavBar extends Component {
+export default class Wallet extends Component {
   createKey() {
     // generate key
     const privateKey = bsv.PrivateKey.fromRandom()
     const publicKey = bsv.PublicKey.fromPrivateKey(privateKey)
     const publicAddress = bsv.Address.fromPublicKey(publicKey)
-    
+
     const key = {
       privateKey: privateKey.toString(),
       publicKey: publicKey.toString(),
@@ -38,17 +38,15 @@ export default class NavBar extends Component {
 
   render() {
     return (
-      <Grid item xs={12} style={{ height: 60 }}>
-        <AppBar>
-          <div style={{ height: 60 }}>
+      <Grid item xs={12} md={10} xl={8} style={{ height: 40 }}>
+        <div style={{ height: 60 }}>
           <Button onClick={this.createKey}>
             CREATE KEY
           </Button>
           <Button onClick={this.downloadKey}>
             DOWNLOAD KEY
           </Button>
-          </div>
-        </AppBar>
+        </div>
       </Grid>
     )
   }

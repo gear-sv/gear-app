@@ -1,0 +1,15 @@
+{
+  "name": "gearium",
+  "version": "1.0.0",
+  "description": "contract-app web server and planarium proxy server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sean Pollock",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "express": "^4.17.1"
+  }
+}
