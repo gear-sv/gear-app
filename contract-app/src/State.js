@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Grid, Paper, Button, TextField, Divider } from "@material-ui/core"
+import { Grid, Paper, Button, TextField, Divider, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography } from "@material-ui/core"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import axios from "axios"
@@ -23,20 +23,23 @@ export default class State extends Component {
       url: `http://localhost:3030/state/${this.block}`,
       responseType: "json"
     })
-    console.log("response", response)
 
     this.setState({ response: response.data })
   }
 
   result() {
     if (this.state.response) {
-      console.log("state is set")
       return (
-        <div>
-          <SyntaxHighlighter language="json" style={ atomDark }>
-            {JSON.stringify(this.state.response, null, 2)}
-          </SyntaxHighlighter>
-        </div>
+        <ExpansionPanel>
+          <ExpansionPanelSummary>
+            <Typography>{this.block}</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <SyntaxHighlighter language="json" style={ atomDark }>
+              {JSON.stringify(this.state.response, null, 2)}
+            </SyntaxHighlighter>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
       )
     }
     return null

@@ -36,6 +36,16 @@ export default class Wallet extends Component {
     document.body.removeChild(link)
   }
 
+  showQR() {
+    // fetch public key
+    const key = JSON.parse(window.localStorage.getItem("key"))
+    console.log(key)
+
+    return (
+      null
+    )
+  }
+
   render() {
     return (
       <Grid item xs={12} md={10} xl={8} style={{ height: 40 }}>
@@ -45,6 +55,9 @@ export default class Wallet extends Component {
           </Button>
           <Button onClick={this.downloadKey}>
             DOWNLOAD KEY
+          </Button>
+          <Button onClick={this.showQR}>
+            QR CODE
           </Button>
         </div>
       </Grid>

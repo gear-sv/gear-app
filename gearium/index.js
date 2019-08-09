@@ -43,6 +43,7 @@ const gearium = {
       STATE
     */
     app.get("/state/:block", async (req, res) => {
+      console.log("block", req.params.block)
       // 1. format query string
       const query = {
         "get": req.params.block

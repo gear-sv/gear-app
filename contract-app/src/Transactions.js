@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Grid, Paper, Divider, Table, TableBody, TableCell, TableRow, TableHead, Button, TextField } from "@material-ui/core"
+import { Grid, Paper, Divider, Button, TextField, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography } from "@material-ui/core"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import axios from "axios"
@@ -29,13 +29,17 @@ export default class Transaction extends Component {
 
   result() {
     if (this.state.response) {
-      console.log("state is set")
       return (
-        <div>
-          <SyntaxHighlighter language="json" style={ atomDark }>
-            {JSON.stringify(this.state.response, null, 2)}
-          </SyntaxHighlighter>
-        </div>
+        <ExpansionPanel>
+          <ExpansionPanelSummary>
+            <Typography>{this.txid}</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <SyntaxHighlighter language="json" style={ atomDark }>
+              {JSON.stringify(this.state.response, null, 2)}
+            </SyntaxHighlighter>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
       )
     }
     return null
