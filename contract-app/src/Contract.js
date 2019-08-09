@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import { Grid, Paper, Button, Divider, Card, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, TextField } from "@material-ui/core"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import code from "./contract.json"
 
 export default class extends Component {
@@ -24,9 +26,9 @@ export default class extends Component {
               <Typography>FungibleToken.cpp</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <span style={{ whiteSpace: "pre-wrap" }}>
+              <SyntaxHighlighter language="cpp" style={ atomDark }>
                 {code.code}
-              </span>
+              </SyntaxHighlighter>
             </ExpansionPanelDetails>
           </ExpansionPanel>
         </Paper>
@@ -34,3 +36,12 @@ export default class extends Component {
     )
   }
 }
+
+
+/*
+
+<span style={{ whiteSpace: "pre-wrap" }}>
+  {code.code}
+</span>
+
+*/

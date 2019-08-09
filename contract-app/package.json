@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "wds": "webpack-dev-server --config ./webpack.config.js",
-    "compile": "webpack && cp dist.js ../gearium/ && cp index.html ../gearium/"
+    "compile": "webpack && cp dist.js ../gearium/static/ && cp index.html ../gearium/static/"
   },
   "repository": {
     "type": "git",
@@ -37,6 +37,7 @@
     "npm": "^6.10.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-syntax-highlighter": "^11.0.2",
     "victory": "^32.3.3"
   }
 }

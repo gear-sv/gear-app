@@ -1,11 +1,15 @@
 import React, { Component } from "react"
 import { Grid, Paper, Button, TextField, Divider } from "@material-ui/core"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import axios from "axios"
 
 export default class State extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      response: null
+    }
   }
 
   handleChange(e) {
@@ -13,11 +17,29 @@ export default class State extends Component {
   }
 
   async query() {
+    console.log("this.block", this.block)
     const response = await axios({
       method: "get",
       url: `http://localhost:3030/state/${this.block}`,
       responseType: "json"
     })
+    console.log("response", response)
+
+    this.setState({ response: response.data })
+  }
+
+  result() {
+    if (this.state.response) {
+      console.log("state is set")
+      return (
+        <div>
+          <SyntaxHighlighter language="json" style={ atomDark }>
+            {JSON.stringify(this.state.response, null, 2)}
+          </SyntaxHighlighter>
+        </div>
+      )
+    }
+    return null
   }
 
   render() {
@@ -35,8 +57,17 @@ export default class State extends Component {
             style={{width: '90%' }}
           />
           <Button onClick={this.query.bind(this)} style={{ width: "10%", height: 80 }}>QUERY</Button>
+          {this.result()}
         </Paper>
       </Grid>
     )
   }
 }
+
+/*
+
+<pre>
+  {JSON.stringify(this.state.response, null, 2)}
+</pre>
+
+*/

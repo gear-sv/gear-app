@@ -11,7 +11,6 @@ const gearium = {
     // static interface for web app
     app.use(express.static("static"))
 
-
     /*
       WEB SERVER
     */
@@ -23,6 +22,7 @@ const gearium = {
       TRANSACTION
     */
     app.get("/transaction/:id", async (req, res) => {
+      console.log("hit transaction query")
       // 1. format query string
       const query = {
         "get": req.params.id
@@ -36,7 +36,7 @@ const gearium = {
 
       console.log(response.data.val)
 
-      // res.send(response.data.val)
+      res.send(response.data.val)
     })
 
     /*
@@ -56,7 +56,7 @@ const gearium = {
 
       console.log(response.data.val)
 
-      // res.send(response.data.val)
+      res.send(response.data.val)
     })
 
     app.listen(port, () => {
