@@ -1,15 +1,18 @@
 import React, { Component } from "react"
-import { Grid, Paper, Divider, Button, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, TextField } from "@material-ui/core"
+import { Grid, Paper, Divider, Button, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Typography, TextField, Snackbar, IconButton, CloseIcon } from "@material-ui/core"
 import datapay from "datapay"
 import contract from "./contract.json"
 
 export default class Write extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      txBar: false
+    }
     this.mint = {}
     this.setOwner = {}
     this.transfer = {}
+    this.open = false
   }
 
   handleChange(method, e) {
@@ -26,12 +29,21 @@ export default class Write extends Component {
     const tx = {
       data: [ "gearsv", contract.id, method, ...Object.values(this[method]) ],
       pay: {
-        key: key.privateKey
+        key: key.privateKey,
+        fee: 0
       }
     }
     console.log("tx", tx)
 
     // 3. submit transaction via datapay
+    // datapay.send(tx, (error, hash) => {
+    //
+    // })
+    this.setState({ txBar: true })
+  }
+
+  handleClose() {
+    console.log("close this fkr")
   }
 
   render() {
@@ -105,6 +117,29 @@ export default class Write extends Component {
             </ExpansionPanelDetails>
           </ExpansionPanel>
         </Paper>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.txBar}
+          autoHideDuration={1000}
+          ContentProps={{
+            'aria-describedby': 'message-id',
+          }}
+
+          message={<span id="message-id">Transaction Sent:</span>}
+          action={[
+            <IconButton
+              key="close"
+              aria-label="close"
+              color="inherit"
+              onClick={this.handleClose}
+            >
+              <CloseIcon />
+            </IconButton>,
+          ]}
+        />
       </Grid>
     )
   }
